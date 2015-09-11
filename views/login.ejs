@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+    <title>Blogger</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <style>
+        body         { padding-top:80px; }
+    </style>
+</head>
+<body>
+<div class="container">
+<div class="col-sm-6 col-sm-offset-3">
+    <h1><span class="fa fa-sign-in"></span> Blogger</h1> <hr>
+    <p> <h4> Login or Setup: </h4></p> <br> 
+
+    <% if (typeof message != "undefined" && message.length > 0) { %>
+     <div class="alert alert-danger"> <%=message %> </div>
+    <% } %>
+
+      <form action="/login" method ="post">
+      <label > Username Or Email </label>
+      <input type="text" class="form-control" name="username">
+      <label > Password </label>
+      <input type= "password" class = "form-control" name="password">
+     <br> <button type ="submit" class="btn btn-warning btn-sg"> login </button>
+    </form>
+    <hr>
+    <p> Need an account? <a href="/signup"> signup </a>
+    <p> or go <a href="/"> home </a>
+
+</div>
+</div>
+</body>
+</html>

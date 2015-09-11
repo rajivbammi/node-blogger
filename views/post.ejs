@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+<head>
+    <title>Blogger</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <style>
+        body         { padding-top:80px; }
+    </style>
+</head>
+<body>
+<div class="container">
+<div class="col-sm-8 col-sm-offset-3">
+    <h3><span class="fa fa-sign-in"></span> Post Details </h3>
+
+
+    <% if (typeof message !== "undefined" && message.length > 0) { %>
+     <div class="alert alert-danger"> <%= message %></div>
+    <% } %>
+
+      <form action="/post/<%= post.id %>" method ="post" encType="multipart/form-data"> <label > Title </label>
+      <input type="text" class="form-control" name="Title" value="<%= post.title %>">
+      <br>
+      <label > Description </label>
+      <input type= "description" class = "form-control" name="description" value="<%= post.content %>">
+       <br>
+      <label > Image </label><br>
+       <% if (post.image) { %>
+     <img src="<%= image %>"/>
+    <% } else { %>
+      <input type= "file" class = "form-control" name="image">
+     <% } %>
+     <br>
+     
+     <hr>
+
+       <% if (verb == 'Edit' || verb =='Create') { %>
+       <button type ="submit" class="btn btn-warning btn-sg"> <%=verb %>  </button>
+       <% }  %>
+      &nbsp;&nbsp;&nbsp;&nbsp;<a href = "/profile"> Back to profile page </a>
+    </form>
+    <hr>
+    <% if (post.comments) { %>
+     <h3><span class="fa fa-sign-in"></span> Comments: </h3>
+    <!--<form action ="/comment/<%= post.id %>" method="post">-->
+    <form action ="/comment/" method="post">
+     <input type="hidden" name="postId" value="<%= post.id %>">
+    <div> <b> Add Comments: </b></div>
+    <input type = "text" size = "60" name="content"/> 
+    <br/><br/>
+    <button type ="submit" class="btn btn-warning btn-sg"> 
+    Post </button>
+    <hr>
+    </form>
+    <%post.comments.length%>
+    <% if (post.comments) { %>
+      <h3><b>Your Comments:</b></h3>
+            <% var comments = post.comments; %>
+            <% comments.forEach(function(comment) { %>
+                <span>
+                <span class="user"><b><%= comment.userName %></b></span>
+                <span > : <%= comment.content %> </span>
+                </span>
+             <a type="button" class="btn btn-default btn-sm delete" href="">Edit</a>
+            <a type="button" data-id="" class="btn btn-default btn-sm delete" href="/comment/delete">Delete</a>
+            <br/> <br/>
+            <% }); %>
+         <% } %>
+    <% } %>
+    </div>
+
+</div>
+</div>
+</body>
+</html>
