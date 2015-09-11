@@ -36,7 +36,7 @@ Time spent: `8`
 
 `walkthrough.gif`
 (walkthrough.gif)
-https://github.com/rajivbammi/dropbox-demo/blob/master/walkthrough.gif
+https://github.com/rajivbammi/node-blogger/blob/master/walkthrough.gif
 
 ![Video Walkthrough](...)
 
